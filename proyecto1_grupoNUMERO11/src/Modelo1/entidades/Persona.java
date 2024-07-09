@@ -1,32 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package modelo1.entidades;
-
-/**
- *
- * @author ivand
- */
+package entidades;
 public class Persona extends Entidad{
-    private String cedula;
+    
     private String telefono;
+    
     // Constructor que llama al constructor de la clase padre
-    public Persona(String nombre, String email, String cedula, String telefono) {
-        super(nombre, email);
-        this.cedula = cedula;
-        this.telefono = telefono;
+    public Persona(String nombre, String email, String numeroIdentidad,String fechaRegistro, String telefono) {
+        super(nombre, email, numeroIdentidad);
+        this.telefono = telefono ;
     }
-
-    // Getter y setter para cedula
-    public String getCedula() {
-        return cedula;
-    }
-
-    public void setCedula(String cedula) {
-        this.cedula = cedula;
-    }
-
+    
     // Getter y setter para telefono
     public String getTelefono() {
         return telefono;
@@ -36,5 +18,8 @@ public class Persona extends Entidad{
         this.telefono = telefono;
     }
     
-    
+    @Override
+    public String mostrarInformacion(){
+        return String.format("%-10s %-15s %-20s %-25s %-25s %-15s %n",codigo,fechaRegistro, numeroIdentidad,nombre,email,telefono);
+    }
 }
