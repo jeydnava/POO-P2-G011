@@ -1,22 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package modelo1;
-
-/**
- *
- * @author ivand
- */
 public class Categoria {
     private TipoCategoria tipoCategoria;
     private String nombre;
-    
+
+    //Constructor
     public Categoria(TipoCategoria tipoCategoria, String nombre) {
         this.tipoCategoria = tipoCategoria;
         this.nombre = nombre;
     }
 
+    //Metodos
     public TipoCategoria getTipoCategoria() {
         return tipoCategoria;
     }
@@ -31,6 +24,5 @@ public class Categoria {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    
     }
 }
