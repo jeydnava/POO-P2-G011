@@ -2,34 +2,25 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package modelo1.entidades;
+package entidades;
 
 /**
  *
- * @author ivand
+ * @author jeydnava
  */
 public class Banco extends Entidad {
-    private String ruc;
     private String nombreOficialCredito;
     private String telefonoOficialCredito;
 
     // Constructor que llama al constructor de la clase padre
-    public Banco(String nombre, String email, String ruc, String nombreOficialCredito, String telefonoOficialCredito) {
-        super(nombre, email);
-        this.ruc = ruc;
+    public Banco(String nombre, String email, String numeroIdentidad,String fechaRegistro, String nombreOficialCredito, String telefonoOficialCredito) {
+        super(nombre, email,numeroIdentidad);
+  
         this.nombreOficialCredito = nombreOficialCredito;
         this.telefonoOficialCredito = telefonoOficialCredito;
     }
 
-    // Getter y setter para ruc
-    public String getRuc() {
-        return ruc;
-    }
-
-    public void setRuc(String ruc) {
-        this.ruc = ruc;
-    }
-
+  
     // Getter y setter para nombreOficialCredito
     public String getNombreOficialCredito() {
         return nombreOficialCredito;
@@ -48,4 +39,8 @@ public class Banco extends Entidad {
         this.telefonoOficialCredito = telefonoOficialCredito;
     } 
     
+    public String mostrarInformacion(){
+        return String.format("%-10s %-15s %-20s %-25s %-25s %-15s %n",codigo,fechaRegistro, numeroIdentidad,nombre,email,"Oficial: "+nombreOficialCredito+"\tTelefono: "+telefonoOficialCredito);
+    }
 }
+
