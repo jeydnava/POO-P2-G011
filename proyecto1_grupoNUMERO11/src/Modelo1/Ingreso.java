@@ -1,23 +1,18 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package modelo1 ;
-
-
-/**
- *
- * @author ivand
- */
+package modelo;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 public class Ingreso extends TransaccionFinanciera{
     private Categoria categoria;
     private String repeticion;
-    public Ingreso(String codigo, String descripcion, double valor, String fechaInicio, String fechaFin, Categoria categoria, String repeticion) {
-        super(codigo, descripcion, valor, fechaInicio, fechaFin);
+
+    //Constructor
+    public Ingreso( String descripcion, double valor, String fechaInicio, String fechaFin, Categoria categoria, String repeticion) {
+        super(descripcion, valor, fechaInicio, fechaFin);
         this.categoria = categoria;
         this.repeticion = repeticion;
     }
-
+   //Metodos
     public Categoria getCategoria() {
         return categoria;
     }
@@ -35,9 +30,11 @@ public class Ingreso extends TransaccionFinanciera{
     }
 
     @Override
-    public void mostrarInformacion() {
-        super.mostrarInformacion();
-        System.out.println("Categoría: " + categoria);
-        System.out.println("Repetición: " + repeticion);
+    public String mostrarInformacion() {
+        return String.format("%-10s %-30s %-15s %-15s %-15s %-15s %-15s %n",codigo,descripcion, valor,fechaInicio,fechaFin,categoria.getNombre(),repeticion);
     }
+    
+    public  String mostrarReporte(){
+         return String.format("%-20s %-20s %n", categoria.getNombre(), valor);
+    } 
 }
