@@ -1,27 +1,23 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package modelo1;
-
-import modelo1.entidades.Persona;
-
-/**
- *
- * @author ivand
- */
+package modelo;
+import entidades.Persona;
 public class Prestamo extends TransaccionFinanciera {
     private Persona deudor;
     private String fechaDePrestamo;
     private int cuota;
-    
-    public Prestamo(String codigo, String descripcion, double valor, String fechaInicio, String fechaFin, Persona deudor, String fechaDePrestamo, int cuota) {
-        super(codigo, descripcion, valor, fechaInicio, fechaFin);
+
+    //Constructor
+    public Prestamo( String descripcion, double valor, String fechaInicio, String fechaFin, Persona deudor, String fechaDePrestamo, int cuota) {
+        super(descripcion, valor, fechaInicio, fechaFin);
         this.deudor= deudor;
         this.fechaDePrestamo=fechaDePrestamo;
         this.cuota= cuota;
-         
-     }    
+     }
+
+    //Metodos
+    //Sobreescritura de mostrarInformacion
+    public String mostrarInformacion() {
+        return String.format("%-15s %-15s %-15s %-30s %-20s %-15s %n",codigo,deudor.getNombre(), valor,descripcion,fechaDePrestamo,cuota);
+    }
     
     public Persona getDeudor() {
         return deudor;
