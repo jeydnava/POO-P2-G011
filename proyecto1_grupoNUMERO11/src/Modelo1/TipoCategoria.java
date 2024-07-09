@@ -1,14 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package modelo1;
-
-/**
- *
- * @author ivand
- */
+package modelo;
 public enum TipoCategoria {
-    Ingreso,
-    Gasto
+    GASTO,
+    INGRESO
 }
