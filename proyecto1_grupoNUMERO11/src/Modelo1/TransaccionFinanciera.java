@@ -1,35 +1,37 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package modelo1;
+package modelo;
+import java.util.ArrayList;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
-/**
- *
- * @author ivand
- */
-public class TransaccionFinanciera {
-    private String codigo;
-    private String descripcion;
-    private double valor;
-    private String fechaInicio;
-    private String fechaFin;
+public abstract class TransaccionFinanciera {
+    protected static int contador=1;
+    protected int codigo;
+    protected String descripcion;
+    protected double valor;
+    protected String fechaInicio;
+    protected String fechaFin;
     
-     // Constructor
-    public TransaccionFinanciera(String codigo, String descripcion, double valor, String fechaInicio, String fechaFin) {
-        this.codigo = codigo;
+    public static void incrementarCodigo(){
+        contador++;
+    }
+
+    //Constructor
+    public TransaccionFinanciera(String descripcion, double valor, String fechaInicio, String fechaFin) {
+        this.codigo=contador;
         this.descripcion = descripcion;
         this.valor = valor;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
+        incrementarCodigo();
     }
 
     // Métodos getters y setters
-    public String getCodigo() {
+    public int getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(String codigo) {
+    public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
 
@@ -64,14 +66,21 @@ public class TransaccionFinanciera {
     public void setFechaFin(String fechaFin) {
         this.fechaFin = fechaFin;
     }
-
-    // Método para mostrar la información de la transacción
-    public void mostrarInformacion() {
-        System.out.println("Código: " + codigo);
-        System.out.println("Descripción: " + descripcion);
-        System.out.println("Valor: " + valor);
-        System.out.println("Fecha de Inicio: " + fechaInicio);
-        System.out.println("Fecha de Fin: " + fechaFin);
-    }
     
+    //validacion de fechas
+    public static boolean esFechaMayor(String fecha1, String fecha2) {
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    try {
+        LocalDate date1 = LocalDate.parse(fecha1, formatter);
+        LocalDate date2 = LocalDate.parse(fecha2, formatter);
+        return date1.isAfter(date2);
+        }catch (DateTimeParseException e) {
+        System.out.println("Error al analizar las fechas: " + e.getMessage());
+        return false;
+        }
+    }
+
+    public String mostrarInformacion() {
+        return String.format("%-10s %-30s %-15s %-15s %-15s %n",codigo,descripcion, valor,fechaInicio,fechaFin);
+    }
 }
